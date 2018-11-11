@@ -35,6 +35,16 @@ input[type=text], select, textarea {
     margin-bottom: 16px;
     resize: vertical;
 }
+input[type=password], select, textarea {
+    width: 50%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin-top: 6px;
+    margin-bottom: 16px;
+    resize: vertical;
+}
 
 button[type=button] {
     background-color: #5F9EA0;
@@ -76,14 +86,14 @@ button[type=button]:hover {
 <div class="container">
     <h3 >Login your Account</h3>
   <form action="loginservlet">
-    <label for="email2" class="mb-2 mr-sm-2">Email</label><br>
+    <label for="email2" class="mb-2 mr-sm-2">username</label><br>
     <input type="text" class="form-control mb-2 mr-sm-2" id="email2" placeholder="Enter email"><br>
     <label for="pwd2" class="mb-2 mr-sm-2">Password</label><br>
-    <input type="text" class="form-control mb-2 mr-sm-2" id="pwd2" placeholder="Enter password"><br>
+    <input type="password" class="form-control mb-2 mr-sm-2" id="pwd2" placeholder="Enter password"><br>
     <div class="form-check mb-2 mr-sm-2">
-      <label class="form-check-label">
+     <%-- <label class="form-check-label">
         <input class="form-check-input "type="checkbox"> Remember me
-      </label>
+      </label>--%>
     </div><br>    
     <button type="submit" class="btn btn-primary mb-2">Login</button>
     <a href="./CreateA.html"><button type="button" class="btn btn-primary mb-2">Create Account</button></a>
