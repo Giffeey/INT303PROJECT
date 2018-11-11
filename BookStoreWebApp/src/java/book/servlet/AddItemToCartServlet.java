@@ -7,10 +7,10 @@ package book.servlet;
 
 import book.jpa.controller.BookJpaController;
 import book.model.Book;
+import book.model.Cart;
 import book.model.Customer;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.List;
 import javax.annotation.Resource;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.PersistenceUnit;
@@ -25,7 +25,7 @@ import javax.transaction.UserTransaction;
  *
  * @author GIFS
  */
-public class AllBookServlet extends HttpServlet {
+public class AddItemToCartServlet extends HttpServlet {
 
     @Resource
     UserTransaction utx;
@@ -44,12 +44,22 @@ public class AllBookServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        HttpSession session = request.getSession(false);
+        if (session != null) {
+            Customer customer = (Customer) session.getAttribute("customer");
+            if (customer != null) {
 
-        BookJpaController bookCtrl = new BookJpaController(utx, emf);
-        List<Book> book = bookCtrl.findBookEntities();
-
-        request.setAttribute("books", book);
-        getServletContext().getRequestDispatcher("/BookList.jsp").forward(request, response);
+                Cart cart = (Cart) session.getAttribute("cart");
+                if (cart == null) {
+                    cart = new Cart();
+                    session.setAttribute("cart", cart);
+                }
+                String bookIsbn = request.getParameter("isbn");
+                BookJpaController bookCtrl = new BookJpaController(utx, emf);
+                Book b = bookCtrl.findBook(bookIsbn);
+                cart.add(b);
+            }
+        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

@@ -46,28 +46,21 @@ public class CategoryOfBookServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        HttpSession session = request.getSession(false);
-        if (session != null) {
-            Customer cust = (Customer) session.getAttribute("customer");
-            if (cust != null) {
-                BookJpaController bookCtrl = new BookJpaController(utx, emf);
-                List<Book> book = bookCtrl.findBookEntities();
-                List<Book> bookByCate = new ArrayList<>();
-                for (Book books : book) {
-                    if (books.getCategory().equals(request.getParameter("category"))) {
-                        bookByCate.add(books);
-                    }
-                }
-
-                session.setAttribute("books", bookByCate);
-                getServletContext().getRequestDispatcher("/CategoryOfBook.jsp").forward(request, response);
-                return;
+        BookJpaController bookCtrl = new BookJpaController(utx, emf);
+        List<Book> book = bookCtrl.findBookEntities();
+        List<Book> bookByCate = new ArrayList<>();
+        for (Book books : book) {
+            if (books.getCategory().getCategory().equals(request.getParameter("category"))) {
+                bookByCate.add(books);
             }
         }
+
+        request.setAttribute("books", bookByCate);
         getServletContext().getRequestDispatcher("/CategoryOfBook.jsp").forward(request, response);
+
     }
 
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
+// <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
      *

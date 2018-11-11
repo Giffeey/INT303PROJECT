@@ -12,6 +12,26 @@
         <servlet-name>GenreOfBookServlet</servlet-name>
         <servlet-class>book.servlet.GenreOfBookServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ShowCartServlet</servlet-name>
+        <servlet-class>book.servlet.ShowCartServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AddItemToCartServlet</servlet-name>
+        <servlet-class>book.servlet.AddItemToCartServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>RemoveItemInCartServlet</servlet-name>
+        <servlet-class>book.servlet.RemoveItemInCartServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>IncreaseItemServlet</servlet-name>
+        <servlet-class>book.servlet.IncreaseItemServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>DecreaseItemServlet</servlet-name>
+        <servlet-class>book.servlet.DecreaseItemServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>AllBookServlet</servlet-name>
         <url-pattern>/AllBook</url-pattern>
@@ -23,6 +43,26 @@
     <servlet-mapping>
         <servlet-name>GenreOfBookServlet</servlet-name>
         <url-pattern>/GenreOfBook</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ShowCartServlet</servlet-name>
+        <url-pattern>/ShowCart</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AddItemToCartServlet</servlet-name>
+        <url-pattern>/AddItemToCart</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>RemoveItemInCartServlet</servlet-name>
+        <url-pattern>/RemoveItemInCart</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>IncreaseItemServlet</servlet-name>
+        <url-pattern>/IncreaseItem</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DecreaseItemServlet</servlet-name>
+        <url-pattern>/DecreaseItem</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

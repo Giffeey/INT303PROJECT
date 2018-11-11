@@ -27,12 +27,13 @@ import javax.transaction.UserTransaction;
  * @author GIFS
  */
 public class GenreOfBookServlet extends HttpServlet {
-
+    
     @Resource
     UserTransaction utx;
-
+    
     @PersistenceUnit(unitName = "BookStoreWebAppPU")
     EntityManagerFactory emf;
+
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -52,11 +53,11 @@ public class GenreOfBookServlet extends HttpServlet {
                 List<Book> book = bookCtrl.findBookEntities();
                 List<Book> bookByCate = new ArrayList<>();
                 for (Book books : book) {
-                    if (books.getCategory().equals(request.getParameter("category"))) {
+                    if (books.getCategory().getCategory().equals(request.getParameter("category"))) {
                         bookByCate.add(books);
                     }
                 }
-
+                
                 session.setAttribute("books", bookByCate);
                 getServletContext().getRequestDispatcher("/CategoryOfBook.jsp").forward(request, response);
                 return;
