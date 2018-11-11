@@ -32,6 +32,10 @@
         <servlet-name>DecreaseItemServlet</servlet-name>
         <servlet-class>book.servlet.DecreaseItemServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>loginservlet</servlet-name>
+        <servlet-class>book.servlet.loginservlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>AllBookServlet</servlet-name>
         <url-pattern>/AllBook</url-pattern>
@@ -63,6 +67,10 @@
     <servlet-mapping>
         <servlet-name>DecreaseItemServlet</servlet-name>
         <url-pattern>/DecreaseItem</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>loginservlet</servlet-name>
+        <url-pattern>/loginservlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
