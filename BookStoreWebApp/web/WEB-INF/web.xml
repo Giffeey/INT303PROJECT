@@ -45,6 +45,10 @@
         <servlet-class>book.servlet.ShippingServlet</servlet-class>
     </servlet>
     <servlet>
+        <servlet-name>PaymentPageServlet</servlet-name>
+        <servlet-class>book.servlet.PaymentPageServlet</servlet-class>
+    </servlet>
+    <servlet>
         <servlet-name>PaymentServlet</servlet-name>
         <servlet-class>book.servlet.PaymentServlet</servlet-class>
     </servlet>
@@ -91,6 +95,10 @@
     <servlet-mapping>
         <servlet-name>ShippingServlet</servlet-name>
         <url-pattern>/Shipping</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>PaymentPageServlet</servlet-name>
+        <url-pattern>/PaymentPage</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>PaymentServlet</servlet-name>
