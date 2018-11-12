@@ -52,12 +52,12 @@ public class AddItemToCartServlet extends HttpServlet {
                 Cart cart = (Cart) session.getAttribute("cart");
                 if (cart == null) {
                     cart = new Cart();
-                    session.setAttribute("cart", cart);
                 }
                 String bookIsbn = request.getParameter("isbn");
                 BookJpaController bookCtrl = new BookJpaController(utx, emf);
                 Book b = bookCtrl.findBook(bookIsbn);
                 cart.add(b);
+                session.setAttribute("cart", cart);
             }
         }
     }

@@ -42,11 +42,29 @@ public class Cart {
         cart.remove(isbn);
     }
 
+    public void decreaseBook(Book b) {
+        LineItem line = cart.get(b.getIsbn());
+        if (line != null) {
+            if (line.getQuantity() != 1) {
+                line.setQuantity(line.getQuantity() - 1);
+            }
+        }
+    }
+
+    public void increaseBook(Book b) {
+        LineItem line = cart.get(b.getIsbn());
+        if (line != null) {
+            if (line.getQuantity() != b.getQuantityinstock()) {
+                line.setQuantity(line.getQuantity() + 1);
+            }
+        }
+    }
+
     public BigDecimal getTotalPrice() {
         BigDecimal sum;
         long value = (long) 0.00;
         sum = BigDecimal.valueOf(value);
-        
+
         Collection<LineItem> lineItems = cart.values();
         for (LineItem lineItem : lineItems) {
             sum = lineItem.getTotalPrice().add(sum);

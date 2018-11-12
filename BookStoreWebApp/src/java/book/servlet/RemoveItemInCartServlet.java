@@ -50,13 +50,13 @@ public class RemoveItemInCartServlet extends HttpServlet {
             if (customer != null) {
                 Cart cart = (Cart) session.getAttribute("cart");
                 if (cart != null) {
-                    session.setAttribute("cart", cart);
                     String bookIsbn = request.getParameter("isbn");
 
                     BookJpaController bookCtrl = new BookJpaController(utx, emf);
                     Book book = bookCtrl.findBook(bookIsbn);
 
                     cart.remove(book);
+                    session.setAttribute("cart", cart);
                     response.sendRedirect("ShowItemInCart");
                 }
             }
