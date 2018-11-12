@@ -85,11 +85,11 @@ button[type=button]:hover {
 
 <div class="container">
     <h3 >Login your Account</h3>
-  <form action="loginservlet">
+    <form action="Login" method="post">
     <label for="email2" class="mb-2 mr-sm-2">username</label><br>
-    <input type="text" class="form-control mb-2 mr-sm-2" id="email2" placeholder="Enter email"><br>
+    <input type="text" class="form-control mb-2 mr-sm-2" id="email2" name="username" placeholder="Enter username"><br>
     <label for="pwd2" class="mb-2 mr-sm-2">Password</label><br>
-    <input type="password" class="form-control mb-2 mr-sm-2" id="pwd2" placeholder="Enter password"><br>
+    <input type="password" class="form-control mb-2 mr-sm-2" id="pwd2" name="password" placeholder="Enter password"><br>
     <div class="form-check mb-2 mr-sm-2">
      <%-- <label class="form-check-label">
         <input class="form-check-input "type="checkbox"> Remember me
