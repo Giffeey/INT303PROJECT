@@ -6,9 +6,12 @@
 package book.servlet;
 
 import book.jpa.controller.CustomerJpaController;
+import book.jpa.controller.exceptions.RollbackFailureException;
 import book.model.Customer;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.annotation.Resource;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.PersistenceUnit;
@@ -39,7 +42,7 @@ public class RegisterServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-//เดี๋ยวทำต่อจ้า
+        
         String fName = request.getParameter("fName");
         String lName = request.getParameter("lName");
         String username = request.getParameter("username");
@@ -49,7 +52,21 @@ public class RegisterServlet extends HttpServlet {
         String email = request.getParameter("email");
         
         CustomerJpaController customerCtrl = new CustomerJpaController(utx, emf);
-        //Customer customer = new Customer(Integer.SIZE, username, password, fName, lName, phone, email, null);
+      
+        int custId = customerCtrl.getCustomerCount()+1;
+
+        Customer customer = new Customer(custId, username, password, fName, lName, phone, email);
+        
+        try {
+            customerCtrl.create(customer);
+        } catch (RollbackFailureException ex) {
+            Logger.getLogger(RegisterServlet.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (Exception ex) {
+            Logger.getLogger(RegisterServlet.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        getServletContext().getRequestDispatcher("/index.html").forward(request, response);
+        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
