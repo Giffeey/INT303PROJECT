@@ -5,9 +5,10 @@
  */
 package book.servlet;
 
-import book.jpa.controller.BookJpaController;
-import book.model.Book;
+import book.jpa.controller.OrderdetailJpaController;
 import book.model.Customer;
+import book.model.Orderdetail;
+import book.model.OrderdetailPK;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
@@ -26,11 +27,11 @@ import javax.transaction.UserTransaction;
  *
  * @author GIFS
  */
-public class GenreOfBookServlet extends HttpServlet {
-
+public class HistoryDetailServlet extends HttpServlet {
+    
     @Resource
     UserTransaction utx;
-
+    
     @PersistenceUnit(unitName = "BookStoreWebAppPU")
     EntityManagerFactory emf;
 
@@ -45,22 +46,31 @@ public class GenreOfBookServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
-        BookJpaController bookCtrl = new BookJpaController(utx, emf);
-        List<Book> book = bookCtrl.findBookEntities();
-        List<Book> bookByCate = new ArrayList<>();
-        for (Book books : book) {
-            if (books.getCategory().getCategory().equals(request.getParameter("category"))) {
-                bookByCate.add(books);
+        HttpSession session = request.getSession(false);
+        if (session != null) {
+            Customer customer = (Customer) session.getAttribute("customer");
+            if (customer != null) {
+                String orderNo = request.getParameter("orderNo");
+                int orderNum = Integer.valueOf(orderNo);
+                
+                OrderdetailJpaController orDetailCtrl = new OrderdetailJpaController(utx, emf);
+                List<Orderdetail> orDetail = orDetailCtrl.findOrderdetailEntities();
+                List<Orderdetail> orderDetail = new ArrayList<>();
+                
+                for (Orderdetail orderDe : orDetail) {
+                    if (orderDe.getOrderdetailPK().getOrderno() == orderNum) {
+                        orderDetail.add(orderDe);
+                    }
+                }
+                
+                session.setAttribute("historyDetail", orderDetail);
+                getServletContext().getRequestDispatcher("/HistoryDetail.jsp").forward(request, response);
             }
         }
-
-        request.setAttribute("books", bookByCate);
-        getServletContext().getRequestDispatcher("/CategoryOfBook.jsp").forward(request, response);
-
+        getServletContext().getRequestDispatcher("/index.html").forward(request, response);
     }
 
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
+// <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
      *

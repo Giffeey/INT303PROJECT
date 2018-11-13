@@ -7,11 +7,8 @@ package book.servlet;
 
 import book.jpa.controller.BookJpaController;
 import book.model.Book;
-import book.model.Customer;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
-import java.util.List;
 import javax.annotation.Resource;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.PersistenceUnit;
@@ -26,11 +23,11 @@ import javax.transaction.UserTransaction;
  *
  * @author GIFS
  */
-public class GenreOfBookServlet extends HttpServlet {
-
+public class ShowBookDetailServlet extends HttpServlet {
+    
     @Resource
     UserTransaction utx;
-
+    
     @PersistenceUnit(unitName = "BookStoreWebAppPU")
     EntityManagerFactory emf;
 
@@ -46,21 +43,19 @@ public class GenreOfBookServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
+        HttpSession session = request.getSession();
+        String bookIsbn = request.getParameter("isbn");
+        
         BookJpaController bookCtrl = new BookJpaController(utx, emf);
-        List<Book> book = bookCtrl.findBookEntities();
-        List<Book> bookByCate = new ArrayList<>();
-        for (Book books : book) {
-            if (books.getCategory().getCategory().equals(request.getParameter("category"))) {
-                bookByCate.add(books);
-            }
+        Book book = bookCtrl.findBook(bookIsbn);
+        if (book != null) {
+            session.setAttribute("bookItem", book);
+            getServletContext().getRequestDispatcher("/Book.jsp").forward(request, response);
+            
         }
-
-        request.setAttribute("books", bookByCate);
-        getServletContext().getRequestDispatcher("/CategoryOfBook.jsp").forward(request, response);
-
     }
 
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
+// <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
      *

@@ -52,6 +52,34 @@
         <servlet-name>PaymentServlet</servlet-name>
         <servlet-class>book.servlet.PaymentServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ShowBookDetailServlet</servlet-name>
+        <servlet-class>book.servlet.ShowBookDetailServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>UserInfoServlet</servlet-name>
+        <servlet-class>book.servlet.UserInfoServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>HistoryServlet</servlet-name>
+        <servlet-class>book.servlet.HistoryServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>HistoryDetailServlet</servlet-name>
+        <servlet-class>book.servlet.HistoryDetailServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>LogoutServlet</servlet-name>
+        <servlet-class>book.servlet.LogoutServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>RegisterPageServlet</servlet-name>
+        <servlet-class>book.servlet.RegisterPageServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>RegisterServlet</servlet-name>
+        <servlet-class>book.servlet.RegisterServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>AllBookServlet</servlet-name>
         <url-pattern>/AllBook</url-pattern>
@@ -103,6 +131,34 @@
     <servlet-mapping>
         <servlet-name>PaymentServlet</servlet-name>
         <url-pattern>/Payment</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ShowBookDetailServlet</servlet-name>
+        <url-pattern>/ShowBookDetail</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UserInfoServlet</servlet-name>
+        <url-pattern>/UserInfo</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>HistoryServlet</servlet-name>
+        <url-pattern>/History</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>HistoryDetailServlet</servlet-name>
+        <url-pattern>/HistoryDetail</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>LogoutServlet</servlet-name>
+        <url-pattern>/Logout</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>RegisterPageServlet</servlet-name>
+        <url-pattern>/RegisterPage</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>RegisterServlet</servlet-name>
+        <url-pattern>/Register</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

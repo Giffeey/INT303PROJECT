@@ -5,13 +5,10 @@
  */
 package book.servlet;
 
-import book.jpa.controller.BookJpaController;
-import book.model.Book;
+import book.jpa.controller.CustomerJpaController;
 import book.model.Customer;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
-import java.util.List;
 import javax.annotation.Resource;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.PersistenceUnit;
@@ -19,21 +16,18 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import javax.transaction.UserTransaction;
 
 /**
  *
  * @author GIFS
  */
-public class GenreOfBookServlet extends HttpServlet {
-
+public class RegisterServlet extends HttpServlet {
     @Resource
     UserTransaction utx;
 
     @PersistenceUnit(unitName = "BookStoreWebAppPU")
     EntityManagerFactory emf;
-
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -45,19 +39,17 @@ public class GenreOfBookServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+//เดี๋ยวทำต่อจ้า
+        String fName = request.getParameter("fName");
+        String lName = request.getParameter("lName");
+        String username = request.getParameter("username");
+        String password = request.getParameter("password");
+        String address = request.getParameter("address");
+        String phone = request.getParameter("phone");
+        String email = request.getParameter("email");
         
-        BookJpaController bookCtrl = new BookJpaController(utx, emf);
-        List<Book> book = bookCtrl.findBookEntities();
-        List<Book> bookByCate = new ArrayList<>();
-        for (Book books : book) {
-            if (books.getCategory().getCategory().equals(request.getParameter("category"))) {
-                bookByCate.add(books);
-            }
-        }
-
-        request.setAttribute("books", bookByCate);
-        getServletContext().getRequestDispatcher("/CategoryOfBook.jsp").forward(request, response);
-
+        CustomerJpaController customerCtrl = new CustomerJpaController(utx, emf);
+        //Customer customer = new Customer(Integer.SIZE, username, password, fName, lName, phone, email, null);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
