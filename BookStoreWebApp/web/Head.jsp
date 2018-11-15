@@ -172,20 +172,14 @@ li.dropdown {
         <!--Menu -->	
         <div class="wrap_menu">
                 <ul class="main_menu">
-<<<<<<< HEAD
                     <li class="dropdown">
-                        <a href="Booklist.jsp" class="dropbtn">BOOK</a>
+                        <a href="AllBook" class="dropbtn">BOOK</a>
                             <div class="dropdown-content">
                                 <a href="#">Link 1</a>
                                 <a href="#">Link 2</a>
                                 <a href="#">Link 3</a>
                             </div>
                     </li>
-=======
-                    <li>
-                        <a href="AllBook">BOOK</a>
-                    </li> 
->>>>>>> 90d7ebd0bc6d1f0964f52ab35986638a296b6795
                     <li>
                         <a href="RegisterPage">SIGN UP</a>
 
@@ -204,7 +198,7 @@ li.dropdown {
         </div>
 
             <div class="header-icons">
-		<a href="ShowItemInCart.jsp" class="header-wrapicon1 dis-block">
+		<a href="ShowCart" class="header-wrapicon1 dis-block">
                     <img src="img/shopping-cart.png" class="header-icon1" alt="cart">
 		</a>
 		<span class="linedivide1"></span>

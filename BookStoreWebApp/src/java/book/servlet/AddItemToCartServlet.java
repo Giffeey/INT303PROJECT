@@ -58,6 +58,7 @@ public class AddItemToCartServlet extends HttpServlet {
                 Book b = bookCtrl.findBook(bookIsbn);
                 cart.add(b);
                 session.setAttribute("cart", cart);
+                response.sendRedirect("Home");
             }
         }
     }

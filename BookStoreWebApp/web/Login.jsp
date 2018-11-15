@@ -32,13 +32,13 @@
     <form id="Login">
 
         <div class="form-group">
-            <input type="text" class="form-control" id="inputEmail" placeholder="Username">
+            <input type="text" name="username" class="form-control" id="inputEmail" placeholder="Username">
 
         </div>
 
         <div class="form-group">
 
-            <input type="password" class="form-control" id="inputPassword" placeholder="Password">
+            <input type="password" name="password" class="form-control" id="inputPassword" placeholder="Password">
 
         </div>
         <button type="submit" class="btn btn-primary">SIGN IN</button>

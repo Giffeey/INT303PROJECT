@@ -31,15 +31,16 @@ public class ShowCartServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-//        HttpSession session = request.getSession(false);
-//        if (session != null) {
-//            Cart cart = (Cart) session.getAttribute("cart");
-//            if (cart != null) {
+        HttpSession session = request.getSession(false);
+        if (session != null) {
+            Cart cart = (Cart) session.getAttribute("cart");
+            if (cart != null) {
+                session.setAttribute("cart", cart);
                 getServletContext().getRequestDispatcher("/ShowItemInCart.jsp").forward(request, response);
                 return;
-//            }
-//        }
-        //getServletContext().getRequestDispatcher("/index.html").forward(request, response);
+            }
+        }
+        getServletContext().getRequestDispatcher("/Home.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
