@@ -5,26 +5,18 @@
  */
 package book.servlet;
 
-import book.jpa.controller.CustomerJpaController;
-import book.model.Customer;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.List;
-import javax.annotation.Resource;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.PersistenceUnit;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-import javax.transaction.UserTransaction;
 
 /**
  *
- * @author IAMIN
+ * @author GIFS
  */
-public class Loginservlet extends HttpServlet {
+public class HomeServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -35,48 +27,10 @@ public class Loginservlet extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-    @PersistenceUnit(unitName = "BookStoreWebAppPU")
-    EntityManagerFactory emf;
-
-    @Resource
-    UserTransaction utx;
-
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        
-        HttpSession session = request.getSession();
-        
-        if(session.getAttribute("account") != null){
-            response.sendRedirect("Home");
-            return;
-        }
-        
-        String name = request.getParameter("username");
-        String password = request.getParameter("password");
-        
-        if (name != null && name.trim().length() > 0 && password != null && password.trim().length() > 0) {
-            CustomerJpaController cpj = new CustomerJpaController(utx, emf);
-            //Customer cumodel = cpj.findCustomerusername(name);
-            List<Customer> customer = cpj.findCustomerEntities();
-            Customer cumodel = new Customer();
-            for (Customer cust : customer) {
-                if (cust.getUsername().equalsIgnoreCase(name)) {
-                    cumodel = cust;
-                }
-            }
-
-            if (cumodel.getPassword().equals(password)) {
-                session.setAttribute("customer", cumodel);
-                response.sendRedirect("Home");
-                return;
-            } else {
-                getServletContext().getRequestDispatcher("/Login.jsp").forward(request, response);
-            }
-
-        }
-        getServletContext().getRequestDispatcher("/Login.jsp").forward(request, response);
-
+        getServletContext().getRequestDispatcher("/Home.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

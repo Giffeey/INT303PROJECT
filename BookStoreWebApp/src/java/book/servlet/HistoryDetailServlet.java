@@ -13,8 +13,6 @@ import book.model.Customer;
 import book.model.Orderdetail;
 import book.model.OrderdetailPK;
 import book.model.Orders;
-import static book.model.Orders_.paymentList;
-import static book.model.Orders_.shippingList;
 import book.model.Payment;
 import book.model.Shipping;
 import java.io.IOException;
@@ -62,6 +60,9 @@ public class HistoryDetailServlet extends HttpServlet {
                 String orderNo = request.getParameter("orderNo");
                 int orderNum = Integer.valueOf(orderNo);
 
+                OrdersJpaController orderCtrl = new OrdersJpaController(utx, emf);
+                Orders order = orderCtrl.findOrders(orderNum);
+                
                 OrderdetailJpaController orDetailCtrl = new OrderdetailJpaController(utx, emf);
                 List<Orderdetail> orDetail = orDetailCtrl.findOrderdetailEntities();
                 List<Orderdetail> orderDetail = new ArrayList<>();
@@ -72,9 +73,15 @@ public class HistoryDetailServlet extends HttpServlet {
                     }
                 }
 
+<<<<<<< HEAD
 //                session.setAttribute("historyDetail", orderDetail);
 //                session.setAttribute("paymentDetail", paymentList);
 //                session.setAttribute("shippingDetail", shippingList);
+=======
+                session.setAttribute("historyDetail", orderDetail);
+                session.setAttribute("paymentDetail", order.getPaymentList() );
+                session.setAttribute("shippingDetail", order.getShippingList());
+>>>>>>> 90d7ebd0bc6d1f0964f52ab35986638a296b6795
                 getServletContext().getRequestDispatcher("/HistoryDetail.jsp").forward(request, response);
             }
         }

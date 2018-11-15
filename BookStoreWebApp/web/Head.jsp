@@ -4,6 +4,7 @@
     Author     : Admin
 --%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -164,13 +165,14 @@ li.dropdown {
         <div class="header">
     <!--Logo-->
             <div class="logo">
-                <a href="Home.jsp" class="logo">
+                <a href="Home" class="logo">
             <img src="img/logo-demo2.png" alt="IMG-LOGO">
                 </a>
             </div>
         <!--Menu -->	
         <div class="wrap_menu">
                 <ul class="main_menu">
+<<<<<<< HEAD
                     <li class="dropdown">
                         <a href="Booklist.jsp" class="dropbtn">BOOK</a>
                             <div class="dropdown-content">
@@ -179,11 +181,24 @@ li.dropdown {
                                 <a href="#">Link 3</a>
                             </div>
                     </li>
+=======
                     <li>
-                        <a href="Register.jsp">SIGN UP</a>
+                        <a href="AllBook">BOOK</a>
+                    </li> 
+>>>>>>> 90d7ebd0bc6d1f0964f52ab35986638a296b6795
+                    <li>
+                        <a href="RegisterPage">SIGN UP</a>
+
                     </li>
                     <li>
-                        <a href="Login.jsp">SIGN IN</a>
+                        <c:choose>
+                            <c:when test="${customer != null}">
+                                <a href="Logout"> LOGOUT </a>
+                            </c:when>
+                            <c:otherwise>
+                        <a href="Login">SIGN IN</a>
+                            </c:otherwise>
+                        </c:choose>
                     </li>
                 </ul>
         </div>

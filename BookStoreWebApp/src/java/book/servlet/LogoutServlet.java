@@ -37,10 +37,10 @@ public class LogoutServlet extends HttpServlet {
             Customer customer = (Customer) session.getAttribute("customer");
             if (customer != null) {
                 session.invalidate();
-                getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
+                getServletContext().getRequestDispatcher("/Home.jsp").forward(request, response);
             }
         }
-        getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
+        getServletContext().getRequestDispatcher("/Home.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
