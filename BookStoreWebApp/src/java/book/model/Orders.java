@@ -188,5 +188,13 @@ public class Orders implements Serializable {
     public String toString() {
         return "book.model.Orders[ orderno=" + orderno + " ]";
     }
+
+    public void setPaymentList(Payment payment) {
+        this.paymentList = (List<Payment>) payment;
+    }
+
+    public void setShippingList(Shipping shipping) {
+        this.shippingList = (List<Shipping>) shipping;
+    }
     
 }

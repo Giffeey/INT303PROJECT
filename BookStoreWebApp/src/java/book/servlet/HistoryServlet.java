@@ -7,6 +7,7 @@ package book.servlet;
 
 import book.jpa.controller.OrderdetailJpaController;
 import book.jpa.controller.OrdersJpaController;
+import book.jpa.controller.PaymentJpaController;
 import book.model.Customer;
 import book.model.Orders;
 import java.io.IOException;
@@ -53,10 +54,9 @@ public class HistoryServlet extends HttpServlet {
                 List <Orders> orderList = ordersCtrl.findOrdersEntities();
                 List <Orders> orders = new ArrayList<>();
                 
-                
                 for(Orders order : orderList){
                     if(order.getCustomerid().getCustomerid().equals(customer.getCustomerid())){
-                        orders.add(order);
+                        orders.add(order);             
                     }
                 }
                 

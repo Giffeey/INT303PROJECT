@@ -6,12 +6,21 @@
 package book.servlet;
 
 import book.jpa.controller.OrderdetailJpaController;
+import book.jpa.controller.OrdersJpaController;
+import book.jpa.controller.PaymentJpaController;
+import book.jpa.controller.ShippingJpaController;
 import book.model.Customer;
 import book.model.Orderdetail;
 import book.model.OrderdetailPK;
+import book.model.Orders;
+import static book.model.Orders_.paymentList;
+import static book.model.Orders_.shippingList;
+import book.model.Payment;
+import book.model.Shipping;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import javax.annotation.Resource;
 import javax.persistence.EntityManagerFactory;
@@ -28,10 +37,10 @@ import javax.transaction.UserTransaction;
  * @author GIFS
  */
 public class HistoryDetailServlet extends HttpServlet {
-    
+
     @Resource
     UserTransaction utx;
-    
+
     @PersistenceUnit(unitName = "BookStoreWebAppPU")
     EntityManagerFactory emf;
 
@@ -52,18 +61,20 @@ public class HistoryDetailServlet extends HttpServlet {
             if (customer != null) {
                 String orderNo = request.getParameter("orderNo");
                 int orderNum = Integer.valueOf(orderNo);
-                
+
                 OrderdetailJpaController orDetailCtrl = new OrderdetailJpaController(utx, emf);
                 List<Orderdetail> orDetail = orDetailCtrl.findOrderdetailEntities();
                 List<Orderdetail> orderDetail = new ArrayList<>();
-                
+
                 for (Orderdetail orderDe : orDetail) {
                     if (orderDe.getOrderdetailPK().getOrderno() == orderNum) {
                         orderDetail.add(orderDe);
                     }
                 }
-                
+
                 session.setAttribute("historyDetail", orderDetail);
+                session.setAttribute("paymentDetail", paymentList);
+                session.setAttribute("shippingDetail", shippingList);
                 getServletContext().getRequestDispatcher("/HistoryDetail.jsp").forward(request, response);
             }
         }

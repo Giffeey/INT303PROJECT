@@ -243,6 +243,39 @@ public class BookJpaController implements Serializable {
         }
     }
 
+    public List<Book> findBookByName(String name) {
+        EntityManager em = getEntityManager();
+        try {
+            Query query = em.createNamedQuery("Book.findByBookname");
+            query.setParameter("bookname", "%" + name.toLowerCase() + "%");
+            return query.getResultList();
+        } finally {
+            em.close();
+        }
+    }
+
+    public List<Book> findBookByAuthor(String author) {
+        EntityManager em = getEntityManager();
+        try {
+            Query query = em.createNamedQuery("Book.findByAuthor");
+            query.setParameter("author", "%" + author + "%");
+            return query.getResultList();
+        } finally {
+            em.close();
+        }
+    }
+
+    public List<Book> findBookByPublisher(String publisher){
+        EntityManager em = getEntityManager();
+        try {
+            Query query = em.createNamedQuery("Book.findByPublisher");
+            query.setParameter("publisher", "%" + publisher + "%");
+            return query.getResultList();
+        } finally {
+            em.close();
+        }
+    }
+    
     public int getBookCount() {
         EntityManager em = getEntityManager();
         try {
@@ -255,5 +288,5 @@ public class BookJpaController implements Serializable {
             em.close();
         }
     }
-    
+
 }

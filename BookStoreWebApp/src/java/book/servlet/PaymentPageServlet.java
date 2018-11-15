@@ -35,25 +35,26 @@ public class PaymentPageServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+
         HttpSession session = request.getSession(false);
-        if(session!=null){
+        if (session != null) {
             Customer customer = (Customer) session.getAttribute("customer");
-            if(customer != null){
-                
+            if (customer != null) {
+
                 Cart cart = (Cart) session.getAttribute("cart");
                 Shipping shipping = (Shipping) session.getAttribute("shipping");
-                
+                BigDecimal amount;
                 BigDecimal price = new BigDecimal("500");
-                if(cart.getTotalPrice().compareTo(price) >= 0){
-                     BigDecimal amount = cart.getTotalPrice();
+                if (cart.getTotalPrice().compareTo(price) >= 0) {
+                    amount = cart.getTotalPrice();
+
+                } else {
+                    amount = cart.getTotalPrice().add(shipping.getShipprice());
                 }
-                BigDecimal amount = cart.getTotalPrice().add(shipping.getShipprice());
-                
                 session.setAttribute("amount", amount);
                 getServletContext().getRequestDispatcher("/Payment.jsp").forward(request, response);
                 return;
-                
+
             }
         }
         getServletContext().getRequestDispatcher("/index.html").forward(request, response);
