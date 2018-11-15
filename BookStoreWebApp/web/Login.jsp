@@ -17,11 +17,12 @@
 </html>--%>
 <html>
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1">  
 <style>
 body {
     font-family: Arial, Helvetica, sans-serif;
     background-image: url("./img/r1.png");
+    
 
 }
 
@@ -43,7 +44,7 @@ input[type=password], select, textarea {
     box-sizing: border-box;
     margin-top: 6px;
     margin-bottom: 16px;
-    resize: vertical;
+    resize: vertical;;
 }
 
 button[type=button] {
@@ -79,6 +80,7 @@ button[type=button]:hover {
     padding: 20px;
 }
 </style>
+<jsp:include page="Head.jsp"></jsp:include>
 </head>
 <body>
 
@@ -86,16 +88,16 @@ button[type=button]:hover {
 <div class="container">
     <h3 >Login your Account</h3>
     <form action="Login" method="post">
-    <label for="email2" class="mb-2 mr-sm-2">username</label><br>
-    <input type="text" class="form-control mb-2 mr-sm-2" id="email2" name="username" placeholder="Enter username"><br>
+        <label for="email2" class="mb-2 mr-sm-2">username</label><br>
+        <center><input type="text" class="form-control mb-2 mr-sm-2" id="email2" name="Username" placeholder="Enter username"></center><br>
     <label for="pwd2" class="mb-2 mr-sm-2">Password</label><br>
-    <input type="password" class="form-control mb-2 mr-sm-2" id="pwd2" name="password" placeholder="Enter password"><br>
+        <center><input type="password" class="form-control mb-2 mr-sm-2" id="pwd2" name="Password" placeholder="Enter password"></center><br>
     <div class="form-check mb-2 mr-sm-2">
      <%-- <label class="form-check-label">
         <input class="form-check-input "type="checkbox"> Remember me
       </label>--%>
     </div><br>    
-    <button type="submit" class="btn btn-primary mb-2">Login</button>
+    <center><button type="submit" class="btn btn-primary mb-2">Login</button></center>
     <a href="./CreateA.html"><button type="button" class="btn btn-primary mb-2">Create Account</button></a>
   </form>
 </div>

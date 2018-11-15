@@ -3,15 +3,8 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/SIT/INT303/INT303PROJECT/BookStoreWebApp/src/java/book/servlet/IncreaseItemServlet.java</file>
-            <file>file:/D:/SIT/INT303/INT303PROJECT/BookStoreWebApp/src/java/book/servlet/Loginservlet.java</file>
-            <file>file:/D:/SIT/INT303/INT303PROJECT/BookStoreWebApp/src/java/book/servlet/HistoryServlet.java</file>
-            <file>file:/D:/SIT/INT303/INT303PROJECT/BookStoreWebApp/src/java/book/servlet/PaymentServlet.java</file>
-            <file>file:/D:/SIT/INT303/INT303PROJECT/BookStoreWebApp/src/java/book/servlet/ShippingServlet.java</file>
-            <file>file:/D:/SIT/INT303/INT303PROJECT/BookStoreWebApp/src/java/book/servlet/ShowCartServlet.java</file>
-            <file>file:/D:/SIT/INT303/INT303PROJECT/BookStoreWebApp/src/java/book/servlet/ShippingPageServlet.java</file>
-            <file>file:/D:/SIT/INT303/INT303PROJECT/BookStoreWebApp/src/java/book/servlet/HistoryDetailServlet.java</file>
-            <file>file:/D:/SIT/INT303/INT303PROJECT/BookStoreWebApp/src/java/book/servlet/DecreaseItemServlet.java</file>
+            <file>file:/D:/SIT/INT303/INT303PROJECT/BookStoreWebApp/src/java/book/servlet/UserInfoServlet.java</file>
+            <file>file:/D:/SIT/INT303/INT303PROJECT/BookStoreWebApp/src/java/book/model/Category.java</file>
         </group>
     </open-files>
 </project-private>
