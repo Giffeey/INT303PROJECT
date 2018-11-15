@@ -17,89 +17,35 @@
 </html>--%>
 <html>
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1">  
-<style>
-body {
-    font-family: Arial, Helvetica, sans-serif;
-    background-image: url("./img/r1.png");
-    
-
-}
-
-input[type=text], select, textarea {
-    width: 50%;
-    padding: 12px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
-    margin-top: 6px;
-    margin-bottom: 16px;
-    resize: vertical;
-}
-input[type=password], select, textarea {
-    width: 50%;
-    padding: 12px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
-    margin-top: 6px;
-    margin-bottom: 16px;
-    resize: vertical;;
-}
-
-button[type=button] {
-    background-color: #5F9EA0;
-    color: white;
-    padding: 12px 20px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-}
-button[type=submit] {
-    background-color: #5F9EA0;
-    color: white;
-    padding: 12px 20px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-}
-
-button[type=button]:hover {
-    background-color: #73B2B4;
-}
-
-.container {
-    width: 30%;
-    text-align: center;
-    border-radius: 5px;
-    background-color:rgba(50,50,50,0.6);
-    margin-right: auto;
-    margin-left: auto;
-    margin-top: 150px;
-    margin-bottom: auto;
-    padding: 20px;
-}
-</style>
-<jsp:include page="Head.jsp"></jsp:include>
+    <meta name="viewport" content="width=device-width, initial-scale=1">  
+    <link href="css/csslogin.css" rel="stylesheet" type="text/css"/>
+    <jsp:include page="Head.jsp"></jsp:include>
 </head>
 <body>
+    <div class="container">
+        <h1 class="form-heading">login Form</h1>
+            <div class="login-form">
+                <div class="main-div">
+                <div class="panel">
+                    <h2>SIGN IN</h2>
+                </div><br>
+    <form id="Login">
 
+        <div class="form-group">
+            <input type="text" class="form-control" id="inputEmail" placeholder="Username">
 
-<div class="container">
-    <h3 >Login your Account</h3>
-    <form action="Login" method="post">
-        <label for="email2" class="mb-2 mr-sm-2">username</label><br>
-        <center><input type="text" class="form-control mb-2 mr-sm-2" id="email2" name="Username" placeholder="Enter username"></center><br>
-    <label for="pwd2" class="mb-2 mr-sm-2">Password</label><br>
-        <center><input type="password" class="form-control mb-2 mr-sm-2" id="pwd2" name="Password" placeholder="Enter password"></center><br>
-    <div class="form-check mb-2 mr-sm-2">
-     <%-- <label class="form-check-label">
-        <input class="form-check-input "type="checkbox"> Remember me
-      </label>--%>
-    </div><br>    
-    <center><button type="submit" class="btn btn-primary mb-2">Login</button></center>
-    <a href="./CreateA.html"><button type="button" class="btn btn-primary mb-2">Create Account</button></a>
-  </form>
+        </div>
+
+        <div class="form-group">
+
+            <input type="password" class="form-control" id="inputPassword" placeholder="Password">
+
+        </div>
+        <button type="submit" class="btn btn-primary">SIGN IN</button>
+
+    </form>
+    </div>
+</div>
 </div>
 
 </body>

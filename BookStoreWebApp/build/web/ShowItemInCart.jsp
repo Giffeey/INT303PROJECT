@@ -4,6 +4,7 @@
     Author     : GIFS
 --%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -11,87 +12,8 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
         <jsp:include page="Head.jsp"></jsp:include>
-<style>
-   .wrap-table-shopping-cart {
-  overflow: auto;
-}
-
-.container-table-cart::before {
-  content: '';
-  display: block;
-  position: absolute;
-  width: 1px;
-  height: calc(100% - 51px);
-  background-color: #e6e6e6;
-  top: 51px;
-  left: 0;
-}
-
-.container-table-cart::after {
-  content: '';
-  display: block;
-  position: absolute;
-  width: 1px;
-  height: calc(100% - 51px);
-  background-color: #e6e6e6;
-  top: 51px;
-  right: 0;
-}
-
-.table-shopping-cart {
-  border-collapse: collapse;
-  width: 100%;
-  min-width: 992px;
-}
-
-.table-shopping-cart .table-row {
-  border-top: 1px solid #e6e6e6;
-  border-bottom: 1px solid #e6e6e6;
-}
-
-.table-shopping-cart .column-1 {
-  width: 225px;
-  padding-left: 50px;
-}
-.table-shopping-cart .column-2 {
-  width: 330px;
-  padding-right: 30px;
-}
-.table-shopping-cart .column-3 {
-  width: 133px;
-  padding-right: 30px;
-}
-.table-shopping-cart .column-4 {
-  width: 355px;
-  padding-right: 30px;
-}
-.table-shopping-cart .column-5 {
-  padding-right: 30px;
-}
-
-.table-shopping-cart .table-head th {
-  font-family: Montserrat-Bold;
-  font-size: 13px;
-  color: #555555;
-  line-height: 1.5;
-  text-transform: uppercase;
-  padding-top: 16px;
-  padding-bottom: 16px;
-}
-
-.table-shopping-cart td {
-  font-family: Montserrat-Regular;
-  font-size: 16px;
-  color: #555555;
-  line-height: 1.5;
-  padding-top: 37px;
-  padding-bottom: 30px;
-}
-
-.table-shopping-cart .table-row .column-2 {
-  font-size: 15px;
-}    
-</style>
+        <link href="css/cartcss.css" rel="stylesheet" type="text/css"/>
+        
     </head>
     <body>
        <section class="cart bgwhite p-t-70 p-b-100">
@@ -107,30 +29,31 @@
 							<th class="column-4 p-l-70">Quantity</th>
 							<th class="column-5">Total</th>
 						</tr>
-
+                                        <c:forEach items="${cart.lineitem}" var="line" varStatus="vs">
 						<tr class="table-row">
 							<td class="column-1">
 								<div class="cart-img-product b-rad-4 o-f-hidden">
-									<img src="images/item-10.jpg" alt="IMG-PRODUCT">
+									<img src="${line.isbn}" alt="IMG-PRODUCT">
 								</div>
 							</td>
-							<td class="column-2">Book</td>
-							<td class="column-3">฿250.00</td>
+							<td class="column-2">${line.book.name}</td>
+							<td class="column-3">${line.book.price}</td>
 							<td class="column-4">
 								<div class="flex-w bo5 of-hidden w-size17">
-									<button class="btn-num-product-down color1 flex-c-m size7 bg8 eff2">
+                                                                    <form action="DecreaseItem" method="post"><button type="submit" class="btn-num-product-down color1 flex-c-m size7 bg8 eff2">
 										<i class="fs-12 fa fa-minus" aria-hidden="true"></i>
-									</button>
+                                                                        </button></form>
 
-									<input class="size8 m-text18 t-center num-product" type="number" name="num-product1" value="1">
+                                                                    <input class="size8 m-text18 t-center num-product" type="number" name="num-product1" value="1" min="1">
 
-									<button class="btn-num-product-up color1 flex-c-m size7 bg8 eff2">
+									<form action="IncreaseItem" method="post"><button type="submit" class="btn-num-product-up color1 flex-c-m size7 bg8 eff2">
 										<i class="fs-12 fa fa-plus" aria-hidden="true"></i>
-									</button>
+                                                                            </button></form>
 								</div>
 							</td>
 							<td class="column-5">฿250.00</td>
 						</tr>
+                                        </c:forEach>
 					</table>
 				</div>
 			</div>
@@ -150,7 +73,7 @@
 					<span class="m-text21 w-size20 w-full-sm">
 						฿250.00
 					</span>
-				</div>
+                                </div><br>
 
 				<div class="size15 trans-0-4">
 					<!-- Button -->
@@ -160,6 +83,8 @@
 				</div>
 			</div>
 		</div>
-	</section>
+	</section> 
+        
     </body>
+    <jsp:include page="Footer.jsp"></jsp:include>   
 </html>

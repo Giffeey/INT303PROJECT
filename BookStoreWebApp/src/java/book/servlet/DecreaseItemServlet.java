@@ -51,8 +51,9 @@ public class DecreaseItemServlet extends HttpServlet {
             if (customer != null) {
                 Cart cart = (Cart) session.getAttribute("cart");
                 if (cart != null) {
+                    //String numBook = request.getParameter("num-product1");
                     String bookIsbn = request.getParameter("isbn");
-
+                    
                     BookJpaController bookCtrl = new BookJpaController(utx, emf);
                     Book book = bookCtrl.findBook(bookIsbn);
 

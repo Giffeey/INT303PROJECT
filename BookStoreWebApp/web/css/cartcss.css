@@ -1,0 +1,276 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Nov 15, 2018, 3:00:17 AM
+    Author     : Admin
+*/
+
+   .wrap-table-shopping-cart {
+  overflow: auto;
+}
+tr {
+    display: table-row;
+    vertical-align: inherit;
+    border-color: inherit;
+}
+.table-shopping-cart td {
+    font-family: Segoe UI;
+    font-size: 16px;
+    color: #555555;
+    line-height: 1.5;
+    padding-top: 37px;
+    padding-bottom: 30px;
+}
+.container-table-cart::before {
+  content: '';
+  display: block;
+  position: absolute;
+  width: 1px;
+  height: calc(100% - 51px);
+  background-color: #e6e6e6;
+  top: 51px;
+  left: 0;
+}
+.container-table-cart::after {
+  content: '';
+  display: block;
+  position: absolute;
+  width: 1px;
+  height: calc(100% - 51px);
+  background-color: #e6e6e6;
+  top: 51px;
+  right: 0;
+}
+.table-shopping-cart {
+  border-collapse: collapse;
+  width: 100%;
+  min-width: 992px;
+}
+.table-shopping-cart .table-row {
+  border-top: 1px solid #e6e6e6;
+  border-bottom: 1px solid #e6e6e6;
+}
+.table-shopping-cart .column-1 {
+  width: 225px;
+  padding-left: 50px;
+}
+.table-shopping-cart .column-2 {
+  width: 330px;
+  padding-right: 30px;
+}
+.table-shopping-cart .column-3 {
+  width: 133px;
+  padding-right: 30px;
+}
+.table-shopping-cart .column-4 {
+  width: 355px;
+  padding-right: 30px;
+}
+.table-shopping-cart .column-5 {
+  padding-right: 30px;
+}
+.table-shopping-cart .table-head th {
+  font-family: Segoe UI;
+  font-size: 13px;
+  color: #555555;
+  line-height: 1.5;
+  text-transform: uppercase;
+  padding-top: 16px;
+  padding-bottom: 16px;
+}
+.table-shopping-cart td {
+  font-family: Segoe UI;
+  font-size: 16px;
+  color: #555555;
+  line-height: 1.5;
+  padding-top: 37px;
+  padding-bottom: 30px;
+}
+.table-shopping-cart .table-row .column-2 {
+  font-size: 15px;
+}
+.pos-relative {
+    position: relative;
+}
+.bo9 {
+	border: 1px solid #e6e6e6;
+	border-radius: 4px;
+}
+.w-size18 {
+    max-width: 442px;
+}
+.m-l-auto {
+    margin-left: auto;
+}
+.m-r-0 {
+    margin-right: 0px;
+}
+.m-t-30 {
+    margin-top: 30px;
+}
+.p-r-40 {
+    padding-right: 40px;
+}
+.p-l-40 {
+    padding-left: 40px;
+}
+.p-b-38 {
+    padding-bottom: 38px;
+}
+.p-t-30 {
+    padding-top: 30px;
+}
+.flex-w {
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -moz-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-flex-wrap: wrap;
+	-moz-flex-wrap: wrap;
+	-ms-flex-wrap: wrap;
+	-o-flex-wrap: wrap;
+	flex-wrap: wrap;
+}
+.size8 {
+    width: 50px;
+    height: 41px;
+}
+.fs-12 {
+    font-size: 12px;
+}
+.m-text18 {
+    font-family: Segoe UI;
+    font-size: 16px;
+    color: #666666;
+    line-height: 1.2;
+}
+.t-center {
+    text-align: center;
+}
+.bg8 {
+    background-color: #e6e6e6;
+}
+.size7 {
+    width: 42px;
+    height: 41px;
+}
+.color1 {
+    color: #888888;
+}
+.bo5 {
+    border: 2px solid #e6e6e6;
+    border-radius: 3px;
+}
+.w-size17 {
+    width: 138px;
+}
+input {
+    outline: none;
+    border: none !important;
+}
+button, input {
+    overflow: visible;
+}
+button, select {
+    text-transform: none;
+}
+button, input, optgroup, select, textarea {
+    margin: 0;
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+}
+button {
+    outline: none !important;/*
+*/    border: none;
+    background: transparent;
+}
+.bo-rad-23 {
+    border-radius: 23px;
+}
+.bg1 {
+    background-color: #222222;
+}
+.s-text1 {
+    font-family: Segoe UI;
+    font-size: 15px;
+    color: white;
+    text-transform: uppercase;
+}
+.sizefull {
+    width: 70%;
+    height: 70%;
+}
+.size15 {
+    width: 100%;
+    height: 50px;
+}
+
+.p-b-30 {
+    padding-bottom: 30px;
+}
+.p-t-26 {
+    padding-top: 26px;
+}
+.w-size19 {
+    width: 34%;
+}
+
+.s-text18 {
+    font-family: Montserrat-Bold;
+    font-size: 15px;
+    color: #555555;
+    line-height: 1.5;
+}
+.m-text20 {
+    font-family: Segoe UI;
+    font-size: 20px;
+    color: #333333;
+    line-height: 1.5;
+    text-transform: uppercase;
+}
+.fs-12 {
+    font-size: 12px;
+}
+.flex-c-m {
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -moz-box;
+	display: -ms-flexbox;
+	display: flex;
+	justify-content: center;
+	-ms-align-items: center;
+	align-items: center;
+}
+.bg8 {background-color: #e6e6e6;}
+.eff2:active {
+	background-color: #e65540;
+	color: white;
+}
+input.num-product {
+    -moz-appearance: textfield;
+    appearance: none;
+    -webkit-appearance: none;
+}
+
+input.num-product::-webkit-outer-spin-button,
+input.num-product::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0; 
+}
+.trans-0-4 {
+	-webkit-transition: all 0.4s;
+    -o-transition: all 0.4s;
+    -moz-transition: all 0.4s;
+    transition: all 0.4s;
+}
+.hov1:hover {
+    background-color: #e65540;
+  	color: white;
+}
+
+
