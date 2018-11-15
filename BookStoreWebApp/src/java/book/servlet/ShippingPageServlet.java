@@ -70,7 +70,7 @@ public class ShippingPageServlet extends HttpServlet {
                 order.setOrderdate(new Date());
                 order.setOrderno(orderCtrl.getOrdersCount() + 1);
                 order.setNumofbook(cart.getTotalQuantity());
-                order.setStatus("ยังไม่ชำระเงิน");
+                order.setStatus("ยังไม่ได้ชำระเงิน");
 
                 OrderdetailJpaController detailCtrl = new OrderdetailJpaController(utx, emf);
                 List<Orderdetail> detail = new ArrayList<>();

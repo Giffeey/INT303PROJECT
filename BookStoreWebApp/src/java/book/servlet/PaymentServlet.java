@@ -5,6 +5,7 @@
  */
 package book.servlet;
 
+import book.jpa.controller.OrdersJpaController;
 import book.jpa.controller.PaymentJpaController;
 import book.jpa.controller.exceptions.RollbackFailureException;
 import book.model.Customer;
@@ -59,7 +60,7 @@ public class PaymentServlet extends HttpServlet {
             Customer customer = (Customer) session.getAttribute("customer");
             if (customer != null) {
                 String cardNo = request.getParameter("cardNo");
-                String cardType = "";
+                String cardType;
 
                 String visa = "^4[0-9]{12}(?:[0-9]{3})?$";
                 String masterCard = "^5[1-5][0-9]{14}$";
@@ -114,8 +115,14 @@ public class PaymentServlet extends HttpServlet {
                 payment.setExpirydate(expDate);
                 payment.setCardtype(cardType);
                 
+                OrdersJpaController orderCtrl = new OrdersJpaController(utx, emf);
+                order.setStatus("ชำระเงินเรียบร้อยแล้ว กำลังดำเนินการจัดส่ง");
+                order.setPaymentList(payment);
+                order.setShippingList(shipping);
+                
                 try {
                     paymentCtrl.create(payment);
+                    orderCtrl.edit(order);
                 } catch (RollbackFailureException ex) {
                     Logger.getLogger(PaymentServlet.class.getName()).log(Level.SEVERE, null, ex);
                 } catch (Exception ex) {
