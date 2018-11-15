@@ -72,9 +72,9 @@ public class HistoryDetailServlet extends HttpServlet {
                     }
                 }
 
-                session.setAttribute("historyDetail", orderDetail);
-                session.setAttribute("paymentDetail", paymentList);
-                session.setAttribute("shippingDetail", shippingList);
+//                session.setAttribute("historyDetail", orderDetail);
+//                session.setAttribute("paymentDetail", paymentList);
+//                session.setAttribute("shippingDetail", shippingList);
                 getServletContext().getRequestDispatcher("/HistoryDetail.jsp").forward(request, response);
             }
         }
