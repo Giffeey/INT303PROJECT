@@ -58,11 +58,12 @@ public class IncreaseItemServlet extends HttpServlet {
 
                     cart.increaseBook(book);
                     session.setAttribute("cart", cart);
-                    response.sendRedirect("ShowItemInCart");
+                    
+                    getServletContext().getRequestDispatcher("/ShowItemInCart.jsp").forward(request, response);
                 }
             }
         }
-        getServletContext().getRequestDispatcher("/index.html").forward(request, response);
+        getServletContext().getRequestDispatcher("/Home.jsp").forward(request, response);
 
     }
 

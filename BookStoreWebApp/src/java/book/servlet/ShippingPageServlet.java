@@ -59,11 +59,12 @@ public class ShippingPageServlet extends HttpServlet {
         HttpSession session = request.getSession(false);
         if (session != null) {
             Customer customer = (Customer) session.getAttribute("customer");
-
+            
             if (customer != null) {
                 Cart cart = (Cart) request.getAttribute("cart");
+                int numbook = cart.getTotalQuantity();
                 OrdersJpaController orderCtrl = new OrdersJpaController(utx, emf);
-
+                System.out.println(cart.getTotalPrice());
                 Orders order = new Orders();
 
                 order.setCustomerid(customer);
@@ -111,7 +112,7 @@ public class ShippingPageServlet extends HttpServlet {
             }
         }
 
-        getServletContext().getRequestDispatcher("/index.html").forward(request, response);
+        getServletContext().getRequestDispatcher("/Home.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

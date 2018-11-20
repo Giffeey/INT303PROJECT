@@ -44,7 +44,7 @@ public class AllBookServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
+        HttpSession session = request.getSession(false);
         BookJpaController bookCtrl = new BookJpaController(utx, emf);
         List<Book> book = bookCtrl.findBookEntities();
 

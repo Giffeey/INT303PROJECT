@@ -56,14 +56,15 @@ public class DecreaseItemServlet extends HttpServlet {
                     
                     BookJpaController bookCtrl = new BookJpaController(utx, emf);
                     Book book = bookCtrl.findBook(bookIsbn);
-
+                    if(book != null){
                     cart.decreaseBook(book);
                     session.setAttribute("cart", cart);
-                    response.sendRedirect("ShowItemInCart");
+                    getServletContext().getRequestDispatcher("/ShowItemInCart.jsp").forward(request, response);
+                    }
                 }
             }
         }
-        getServletContext().getRequestDispatcher("/index.html").forward(request, response);
+        getServletContext().getRequestDispatcher("/Home.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
